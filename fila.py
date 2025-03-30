@@ -1,5 +1,4 @@
 
-
 import time
 
 class Fila:
@@ -29,7 +28,15 @@ class Fila:
         print("Fila atual:", self.itens)
 
     def tamanho(self):
-        return len(self.itens1)
+        return len(self.itens)
+
+    def remocaoEspecial(self, referencia):
+        for i in range(len(self.itens)):
+            if self.itens[i] == referencia:
+                self.itens.pop(i)
+                print(f"{referencia} removido da fila.")
+                return 
+
 
 fila = Fila()
 
@@ -40,7 +47,8 @@ while True:
     print("3. Tirar o primeiro.")
     print("4. Mostrar o tamanho.")
     print("5. Remoção de item especifico.")
-    print("6. Sair.")
+    print("6. Mostrar todos os itens.")
+    print("7. Sair.")
 
     try:
         opcao = int(input("Escolha uma opção: "))
@@ -63,7 +71,22 @@ while True:
     elif opcao == 4:
         print("Tamanho: ", fila.tamanho())
 
+    elif opcao == 5:
+        ref = int(input("Digite o numero que deseja retirar: "))
+                  
+        if(fila.esta_vazia == 0):
+            print("Impossivel, fila está vazia.")
+        else:
+            fila.remocaoEspecial(ref)
+
     elif opcao == 6:
+        if(fila.esta_vazia == 0):
+            print("Fila está vazia.")
+        else:
+            print("Mostrando...")
+            fila.mostrar_fila()
+
+    elif opcao == 7:
 
         print("Saindo", end="")
         time.sleep(1)
